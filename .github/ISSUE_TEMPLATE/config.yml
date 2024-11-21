@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Community Forum
+    url: https://forum.plutonium.pw
+    about: For general support or questions. Try the search feature!
+
+  - name: Discord
+    url: https://discord.gg/plutonium
+    about: For problems with your Plutonium account, or more direct communication.

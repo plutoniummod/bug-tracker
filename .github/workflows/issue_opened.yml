@@ -1,0 +1,83 @@
+name: Label issues
+on:
+  issues:
+    types: [opened, reopened]
+
+env:
+  ISSUE_BODY: ${{ github.event.issue.body }}
+
+jobs:
+  label_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const gameRegex = /### Affected game\(s\)\s*(.*)/;
+            const componentRegex = /### Affected component\(s\)\s*(.*)/;
+            const valueRegex = /\s*[,\n]\s*/;
+
+            const gameLabelMap = {
+              'IW5': 'game: IW5',
+              'T6': 'game: T6',
+              'T5': 'game: T5',
+              'T4': 'game: T4'
+            };
+            const mpLabel = 'mode: MP';
+            const zmLabel = 'mode: ZM';
+            const clientLabel = 'component: client';
+            const serverLabel = 'component: server';
+
+            const issueBody = process.env.ISSUE_BODY;
+            const labelsToAdd = new Set();
+
+            const gameMatches = gameRegex.exec(issueBody);
+            if (gameMatches && gameMatches.length > 1) {
+              const games = gameMatches[1].split(valueRegex);
+
+              // add 'game: ' labels
+              for (const game of games) {
+                for (const [gameMatch, label] of Object.entries(gameLabelMap)) {
+                  if (game.includes(gameMatch)) {
+                    labelsToAdd.add(label);
+                    break;
+                  }
+                }
+              }
+
+              // add 'mode: ' label
+              if (games.every(g => g.includes('MP'))) {
+                labelsToAdd.add(mpLabel);
+              }
+              else if (games.every(g => g.includes('ZM') || g.includes('SP'))) {
+                labelsToAdd.add(zmLabel);
+              }
+            }
+
+            const componentMatches = componentRegex.exec(issueBody);
+            if (componentMatches && componentMatches.length > 1) {
+              const components = componentMatches[1].split(valueRegex);
+
+              // add 'component: ' labels
+              for (const component of components) {
+                if (component.includes('Client')) {
+                  labelsToAdd.add(clientLabel);
+                }
+                if (component.includes('Server')) {
+                  labelsToAdd.add(serverLabel);
+                }
+              }
+            }
+
+            if (labelsToAdd.size === 0) {
+              return;
+            }
+
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: Array.from(labelsToAdd),
+            });

@@ -1,0 +1,128 @@
+name: Bug Report
+description: Report a bug with one of our game clients.
+labels: ["bug"]
+
+body:
+  # Bug details
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for taking the time to fill out this bug report!
+        Only actual **bug** reports are accepted here. For general support or questions, please visit our [Forum](https://forum.plutonium.pw) or [Discord](https://discord.gg/plutonium).
+        Please search to see if an issue already exists for the bug you encountered before reporting it.
+
+        ---
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: |
+        Please describe the issue as well as you can.
+        If relevant, remember to attach any crash dumps and GSC scripts. Screenshots and screen recordings can be of help too.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expectation
+    attributes:
+      label: Expected result
+      description: What did you expect would happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: How can we as simply and reliably as possible reproduce the issue?
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: game
+    attributes:
+      label: Affected game(s)
+      description: Which game(s) does the issue affect?
+      multiple: true
+      options:
+        - BO2 Multiplayer (T6MP)
+        - BO2 Zombies (T6ZM)
+        - MW3 Multiplayer (IW5MP)
+        - BO1 Multiplayer (T5MP)
+        - BO1 Zombies (T5SP)
+        - WaW Multiplayer (T4MP)
+        - WaW Co-Op/Zombies (T4SP)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component(s)
+      description: Which component(s) does the issue affect?
+      multiple: true
+      options:
+        - Client (game)
+        - Server (dedi)
+    validations:
+      required: true
+  
+  - type: input
+    id: version
+    attributes:
+      label: Plutonium version
+      description: Which Plutonium version did the issue occur on?
+      placeholder: "Example: r4516"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Please copy and paste any relevant client or server log output.
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional information
+      description: Any additional information you'd like to add.
+
+  # System information
+  - type: markdown
+    attributes:
+      value: |
+        ## System information
+        Please provide information about the system the bug occurs on.
+
+  - type: input
+    id: system-os
+    attributes:
+      label: Operating system
+      description: The operating system (and preferably version) Plutonium is running on.
+      placeholder: "Example: Windows 11 23H2"
+
+  # Contact details
+  - type: markdown
+    attributes:
+      value: |
+        ## Contact details
+        If you want, you can provide some additional contact info so we can reach you easier.
+
+  - type: input
+    id: contact-plutonium
+    attributes:
+      label: Plutonium profile
+      description: Link to your Plutonium profile.
+      placeholder: https://forum.plutonium.pw/user/
+
+  - type: input
+    id: contact-discord
+    attributes:
+      label: Discord username
+      placeholder: wumpus
