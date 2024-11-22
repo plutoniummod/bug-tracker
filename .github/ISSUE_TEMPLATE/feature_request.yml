@@ -1,0 +1,71 @@
+name: Feature Request
+description: Request a new feature to be added.
+labels: ["feature"]
+
+body:
+  # Bug details
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for taking the time to fill out this feature request!
+        We'd prefer if you discussed the feature with us on [Discord](https://discord.gg/plutonium) before making an issue for it.
+        Please also search to see if an issue already exists for this feature before requesting it.
+
+        ---
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Please describe the feature as well as you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why?
+      description: Why should this feature be implemented? What problems does it solve? How large would the impact be?
+    validations:
+      required: true
+
+  - type: textarea
+    id: how
+    attributes:
+      label: Proposed solution
+      description: How should it be implemented?
+
+  - type: dropdown
+    id: game
+    attributes:
+      label: Affected game(s)
+      description: Which game(s) is the feature request for?
+      multiple: true
+      options:
+        - BO2 Multiplayer (T6MP)
+        - BO2 Zombies (T6ZM)
+        - MW3 Multiplayer (IW5MP)
+        - BO1 Multiplayer (T5MP)
+        - BO1 Zombies (T5SP)
+        - WaW Multiplayer (T4MP)
+        - WaW Co-Op/Zombies (T4SP)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component(s)
+      description: Which component(s) is the feature request for?
+      multiple: true
+      options:
+        - Client (game)
+        - Server (dedi)
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional information
+      description: Any additional information you'd like to add.

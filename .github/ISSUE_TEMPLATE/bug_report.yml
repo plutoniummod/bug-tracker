@@ -18,7 +18,7 @@ body:
     attributes:
       label: What happened?
       description: |
-        Please describe the issue as well as you can.
+        Please describe the bug as well as you can.
         If relevant, remember to attach any crash dumps and GSC scripts. Screenshots and screen recordings can be of help too.
     validations:
       required: true
@@ -35,7 +35,7 @@ body:
     id: repro
     attributes:
       label: Steps to reproduce
-      description: How can we as simply and reliably as possible reproduce the issue?
+      description: How can we as simply and reliably as possible reproduce the bug?
       placeholder: |
         1.
         2.
@@ -47,7 +47,7 @@ body:
     id: game
     attributes:
       label: Affected game(s)
-      description: Which game(s) does the issue affect?
+      description: Which game(s) does the bug affect?
       multiple: true
       options:
         - BO2 Multiplayer (T6MP)
@@ -64,7 +64,7 @@ body:
     id: component
     attributes:
       label: Affected component(s)
-      description: Which component(s) does the issue affect?
+      description: Which component(s) does the bug affect?
       multiple: true
       options:
         - Client (game)
@@ -76,7 +76,7 @@ body:
     id: version
     attributes:
       label: Plutonium version
-      description: Which Plutonium version did the issue occur on?
+      description: Which Plutonium version did the bug occur on?
       placeholder: "Example: r4516"
     validations:
       required: true

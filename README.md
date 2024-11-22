@@ -1,2 +1,2 @@
-# Plutonium Bug Tracker
-Use this repository to report bugs.
+# Plutonium Issue Tracker
+Use this repository to report bugs or request features.
